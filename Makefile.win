@@ -1,0 +1,55 @@
+# Project: ZX TOOLKITZ
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 23/11/19 05:20
+
+WXLIBNAME = wxmsw29u
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = "windres.exe"
+OBJ       = Objects/MingW/ZX\ TOOLKITZApp.o Objects/MingW/ZX\ TOOLKITZFrm.o Objects/MingW/MakeConfig.o Objects/MingW/Untitled1Frm.o Objects/MingW/settings.o Objects/MingW/ZX_TOOLKITZ_private.res
+LINKOBJ   = "Objects/MingW/ZX TOOLKITZApp.o" "Objects/MingW/ZX TOOLKITZFrm.o" "Objects/MingW/MakeConfig.o" "Objects/MingW/Untitled1Frm.o" "Objects/MingW/settings.o" Objects/MingW/ZX_TOOLKITZ_private.res
+LIBS      = -L"C:/Program Files/Dev-Cpp/lib/wx/gcc_lib" -L"C:/Program Files/Dev-Cpp/lib" -L"C:/Program Files/Dev-Cpp/MinGW32/lib" -mwindows -l$(WXLIBNAME) -l$(WXLIBNAME)_gl -lwxscintilla -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxregexu -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32  -g3 
+INCS      = -I"C:/Program Files/Dev-Cpp/MinGW32/include"
+CXXINCS   = -I"C:/Program Files/Dev-Cpp/MinGW32/include" -I"C:/Program Files/Dev-Cpp/" -I"C:/Program Files/Dev-Cpp/include/common"
+RCINCS    = --include-dir "C:/PROGRA~1/Dev-Cpp/include/common"
+BIN       = Output/MingW/ZX TOOLKITZ.exe
+DEFINES   = -D__WXMSW__ -D__GNUWIN32__ -D_UNICODE
+CXXFLAGS  = $(CXXINCS) $(DEFINES)   -g3
+CFLAGS    = $(INCS) $(DEFINES)   -g3
+GPROF     = gprof.exe
+ifeq ($(OS),Windows_NT)
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   RM = rm -f
+   FixPath = $1
+endif
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(call FixPath,$(LINKOBJ)) "$(call FixPath,$(BIN))"
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
+
+Objects/MingW/ZX\ TOOLKITZApp.o: $(GLOBALDEPS) ZX\ TOOLKITZApp.cpp ZX\ TOOLKITZApp.h ZX\ TOOLKITZFrm.h
+	$(CPP) -c "ZX TOOLKITZApp.cpp" -o "Objects/MingW/ZX TOOLKITZApp.o" $(CXXFLAGS)
+
+Objects/MingW/ZX\ TOOLKITZFrm.o: $(GLOBALDEPS) ZX\ TOOLKITZFrm.cpp ZX\ TOOLKITZFrm.h Untitled1Frm.h settings.h
+	$(CPP) -c "ZX TOOLKITZFrm.cpp" -o "Objects/MingW/ZX TOOLKITZFrm.o" $(CXXFLAGS)
+
+Objects/MingW/MakeConfig.o: $(GLOBALDEPS) MakeConfig.cpp MakeConfig.h
+	$(CPP) -c MakeConfig.cpp -o Objects/MingW/MakeConfig.o $(CXXFLAGS)
+
+Objects/MingW/Untitled1Frm.o: $(GLOBALDEPS) Untitled1Frm.cpp Untitled1Frm.h
+	$(CPP) -c Untitled1Frm.cpp -o Objects/MingW/Untitled1Frm.o $(CXXFLAGS)
+
+Objects/MingW/settings.o: $(GLOBALDEPS) settings.cpp settings.h
+	$(CPP) -c settings.cpp -o Objects/MingW/settings.o $(CXXFLAGS)
+
+Objects/MingW/ZX_TOOLKITZ_private.res: Objects/MingW/ZX_TOOLKITZ_private.rc ZX\ TOOLKITZApp.rc 
+	$(WINDRES) --input-format=rc -o Objects/MingW/ZX_TOOLKITZ_private.res $(RCINCS) Objects/MingW/ZX_TOO~1.RC -O coff
